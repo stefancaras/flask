@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="#" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css')}}"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="module"
+      src="{{ url_for('static', filename='js/script.js')}}"
+      defer
+    ></script>
+    <title>Music Player</title>
+  </head>
+  <body>
+    <div class="music-container">
+      <div
+        id="like-dislike"
+        class="d-flex justify-content-around align-items-center w-100 h3 mb-3"
+      >
+        {% if logged_in: %}
+        <i id="like" class="fa-solid fa-heart"></i>
+        <div class="dropdown-center">
+          <button
+            id="logged-in"
+            class="btn bg-pink dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{ name }}
+          </button>
+          <ul class="dropdown-menu text-center bg-player">
+            <li
+              id="liked-list"
+              class="dropdown-item bg-primary rounded-3 h3 mt-2"
+            >
+              Liked music
+            </li>
+            <li
+              id="disliked-list"
+              class="dropdown-item bg-warning rounded-3 h3 mt-2"
+            >
+              Disliked music
+            </li>
+            <li id="all-music" class="dropdown-item bg-success rounded-3 h3">
+              All music
+            </li>
+            <li>
+              <a
+                class="dropdown-item bg-danger rounded-3 h3"
+                href="{{ url_for('logout') }}"
+                >Log out</a
+              >
+            </li>
+          </ul>
+        </div>
+        <i id="dislike" class="fa-solid fa-heart-crack"></i>
+
+        {% else: %}
+        <a class="btn bg-pink" href="{{ url_for('login') }}"
+          >Login / Register</a
+        >
+        {% endif %}
+      </div>
+
+      <div class="music-info text-center w-100 mb-3">
+        <h5 class="title"></h5>
+        <h5 class="artist mb-3"></h5>
+        <div class="d-flex mx-15px">
+          <div id="curr-time">0:00</div>
+          <div id="progress-container">
+            <div class="progress bg-pink"></div>
+          </div>
+          <div id="dur-time"></div>
+        </div>
+      </div>
+
+      <audio id="audio" preload="auto"></audio>
+
+      <div id="navigation" class="d-flex justify-content-between w-100 mb-3">
+        <button id="repeat" class="action-btn text-color">
+          <i class="fas fa-repeat"></i>
+        </button>
+        <button id="prev" class="action-btn text-color">
+          <i class="fas fa-backward"></i>
+        </button>
+        <button id="play" class="action-btn bg-color text-color-dark">
+          <i class="fas fa-play"></i>
+        </button>
+        <button id="next" class="action-btn text-color">
+          <i class="fas fa-forward"></i>
+        </button>
+        <button id="random" class="action-btn text-color">
+          <i class="fas fa-random"></i>
+        </button>
+      </div>
+
+      <input
+        id="filter"
+        type="text"
+        class="form-control mb-3"
+        placeholder="Filter"
+        spellcheck="false"
+      />
+
+      <ul id="playlist" class="list-group overflow-auto w-100"></ul>
+    </div>
+  </body>
+</html>

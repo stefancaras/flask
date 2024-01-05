@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
+:root {
+  color-scheme: dark;
+}
+body {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  background: black;
+  color: #dee0fd;
+  font-family: "Lato", sans-serif;
+}
+li > i {
+  display: inline-block;
+  width: 10%;
+}
+li > span {
+  display: inline-block;
+  width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+.music-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  min-height: 500px;
+  width: 100vw;
+  max-width: 450px;
+  background-color: #101014;
+  padding: 20px;
+}
+.action-btn {
+  width: 50px;
+  height: 50px;
+  background: #0000;
+  font-size: 20px;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+}
+.action-btn:focus {
+  outline: 0;
+}
+.fa-play {
+  cursor: pointer;
+}
+#progress-container {
+  width: 100%;
+  background: #dee0fd;
+  border-radius: 5px;
+  margin: 10px 15px;
+  height: 4px;
+  cursor: pointer;
+}
+.progress {
+  border-radius: 5px;
+  height: 100%;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+.list-group-item {
+  background: #09090b;
+  color: #dee0fd;
+  border-color: #101014;
+}
+.list-group-item.active {
+  background: #09090b;
+  color: #ff0090;
+  border-color: #101014;
+}
+#filter {
+  background: #09090b;
+  color: #dee0fd;
+  border-color: #dee0fd;
+}
+#filter:focus {
+  border-color: #ff0090;
+  box-shadow: 0 0 0 0.25rem #ff009040;
+}
+.artist,
+#filter::placeholder {
+  color: #717281;
+}
+.mx-15px {
+  margin: 0 15px;
+}
+.bg-color {
+  background-color: #dee0fd;
+}
+.bg-player {
+  background-color: #101014;
+}
+.bg-pink {
+  background: #ff0090;
+}
+.text-color {
+  color: #dee0fd;
+}
+.text-color-dark {
+  color: #101014;
+}
+.text-pink {
+  color: #ff0090;
+}
+#logged-in {
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#like,
+#dislike,
+#all-music,
+#liked-list {
+  cursor: pointer;
+}
